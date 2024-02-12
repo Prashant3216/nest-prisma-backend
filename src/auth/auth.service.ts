@@ -31,7 +31,7 @@ export class AuthService {
       throw new ForbiddenException('Password Incorrect');
     }
 
-    return { accessToken: await this.signedToken(user.id, user.email) };
+    return { access_token: await this.signedToken(user.id, user.email) };
   }
   async signUp(body: AuthSignUpDto) {
     //generate the hash password
@@ -50,7 +50,7 @@ export class AuthService {
       });
       //return the user details
 
-      return { accessToken: await this.signedToken(user.id, user.email) };
+      return { access_token: await this.signedToken(user.id, user.email) };
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
